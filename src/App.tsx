@@ -1,15 +1,10 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Mercury from "./components/Mercury";
-import Venus from "./components/Venus";
-import Earth from "./components/Earth";
-import Mars from "./components/Mars";
-import Jupiter from "./components/Jupiter";
-import Saturn from "./components/Saturn";
-import Uranus from "./components/Uranus";
-import Neptune from "./components/Neptune";
-import bg from "./images/background-stars.svg";
+import bg from "./assets/background-stars.svg";
+import { useState } from "react";
+import PlanetPage from "./components/PlanetPage";
+
 let data = require("./data.json");
 const GlobalStyles = createGlobalStyle`
   *{
@@ -20,22 +15,60 @@ const GlobalStyles = createGlobalStyle`
       text-decoration: none;
   }
 `;
+
 function App() {
-  console.log(data);
+  const [info, setInfo] = useState(data);
+  const [clickedPlanet, setClickedPlanet] = useState("Mercury");
+  const [selectedButton, setSelectedButton] = useState("OVERVIEW");
+  function handleClick(planetName: string) {
+    setClickedPlanet(planetName);
+  }
+  console.log(info);
+  function clickButton(name: any) {
+    setSelectedButton(name);
+  }
+  function chooseText(item: any) {
+    if (selectedButton === "OVERVIEW") {
+      return item.overview.content;
+    } else if (selectedButton === "Internal Structure") {
+      return item.structure.content;
+    } else if (selectedButton === "Surface Geology") {
+      return item.geology.content;
+    }
+  }
+  function chooseSource(item: any) {
+    if (selectedButton === "OVERVIEW") {
+      return item.overview.source;
+    } else if (selectedButton === "Internal Structure") {
+      return item.structure.source;
+    } else if (selectedButton === "Surface Geology") {
+      return item.geology.source;
+    }
+  }
   return (
     <Container>
       <GlobalStyles />
       <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<Mercury />} />
-          <Route path="/venus" element={<Venus />} />
-          <Route path="/earth" element={<Earth />} />
-          <Route path="/mars" element={<Mars />} />
-          <Route path="/jupiter" element={<Jupiter />} />
-          <Route path="/saturn" element={<Saturn />} />
-          <Route path="/uranus" element={<Uranus />} />
-          <Route path="/jupiter" element={<Jupiter />} />
-          <Route path="/neptune" element={<Neptune />} />
+        <Route
+          path="/"
+          element={<Header info={info} handleClick={handleClick} />}
+        >
+          {info.map((item: any) => {
+            return (
+              <Route
+                path={item.name === "Mercury" ? "/" : item.name}
+                element={
+                  <PlanetPage
+                    planetName={item.name}
+                    planetText={chooseText(item)}
+                    textSource={chooseSource(item)}
+                    clickButton={clickButton}
+                    selectButton={selectedButton}
+                  />
+                }
+              />
+            );
+          })}
         </Route>
       </Routes>
     </Container>

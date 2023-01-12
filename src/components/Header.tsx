@@ -3,12 +3,12 @@ import { Outlet } from "react-router-dom";
 import { HeaderStyle } from "./HeaderStyle";
 import styled from "styled-components";
 
-export default function Header() {
+export default function Header(props: any) {
   return (
     <>
       <HeaderStyle>
         <Logo>THE PLANETS</Logo>
-        <Navigation />
+        <Navigation info={props.info} handleClick={props.handleClick} />
       </HeaderStyle>
 
       <Outlet />

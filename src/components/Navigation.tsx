@@ -1,50 +1,25 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Navigation() {
+export default function Navigation(props: any) {
   return (
     <nav style={{ width: "60%" }}>
       <ListUl>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/">
-            mercury
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/venus">
-            venus
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/earth">
-            earth
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/mars">
-            mars
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/jupiter">
-            jupiter
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/saturn">
-            saturn
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/uranus">
-            uranus
-          </NavLink>
-        </List>
-        <List>
-          <NavLink style={{ color: "#fff" }} to="/neptune">
-            neptune
-          </NavLink>
-        </List>
+        {props.info.map((item: any) => {
+          return (
+            <List>
+              <NavLink
+                style={{ color: "#fff" }}
+                to={item.name === "Mercury" ? "/" : item.name}
+                onClick={() => {
+                  props.handleClick(item.name);
+                }}
+              >
+                {item.name}
+              </NavLink>
+            </List>
+          );
+        })}
       </ListUl>
     </nav>
   );
