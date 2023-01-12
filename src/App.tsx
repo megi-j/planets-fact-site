@@ -24,6 +24,7 @@ function App() {
     setClickedPlanet(planetName);
   }
   console.log(info);
+
   function clickButton(name: any) {
     setSelectedButton(name);
   }
@@ -64,6 +65,10 @@ function App() {
                     textSource={chooseSource(item)}
                     clickButton={clickButton}
                     selectButton={selectedButton}
+                    rotationTime={item.rotation}
+                    revolutionTime={item.revolution}
+                    radius={item.radius}
+                    averageTemp={item.temperature}
                   />
                 }
               />

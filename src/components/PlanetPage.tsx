@@ -1,37 +1,140 @@
 import styled from "styled-components";
-import Mercury from "../assets/planet-mercury.svg";
-import Venus from "../assets/planet-venus.svg";
-import Earth from "../assets/planet-earth.svg";
-import Mars from "../assets/planet-mars.svg";
-import Jupiter from "../assets/planet-jupiter.svg";
-import Saturn from "../assets/planet-saturn.svg";
-import Uranus from "../assets/planet-uranus.svg";
-import Neptune from "../assets/planet-neptune.svg";
+import MercuryPlanet from "../assets/planet-mercury.svg";
+import MercuryInternal from "../assets/planet-mercury-internal.svg";
+import MercuryGeology from "../assets/geology-mercury.png";
+import VenusPlanet from "../assets/planet-venus.svg";
+import VenusInternal from "../assets/planet-venus-internal.svg";
+import VenusGeology from "../assets/geology-venus.png";
+import EarthPlanet from "../assets/planet-earth.svg";
+import EarthInternal from "..//assets/planet-earth-internal.svg";
+import EarthGeology from "..//assets/geology-earth.png";
+import MarsPlanet from "../assets/planet-mars.svg";
+import MarsInternal from "../assets/planet-mars-internal.svg";
+import MarsGeology from "../assets/geology-mars.png";
+import JupiterPlanet from "../assets/planet-jupiter.svg";
+import JupiterInternal from "../assets/planet-jupiter-internal.svg";
+import JupiterGeology from "../assets/geology-jupiter.png";
+import SaturnPlanet from "../assets/planet-saturn.svg";
+import SaturnInternal from "../assets/planet-saturn-internal.svg";
+import SaturnGeology from "../assets/geology-saturn.png";
+import UranusPlanet from "../assets/planet-uranus.svg";
+import UranusInternal from "../assets/planet-uranus-internal.svg";
+import UranusGeology from "../assets/geology-uranus.png";
+import NeptunePlanet from "../assets/planet-neptune.svg";
+import NeptuneInternal from "../assets/planet-neptune-internal.svg";
+import NeptuneGeology from "../assets/geology-neptune.png";
 
 export default function PlanetPage(props: any) {
   function planetPhoto() {
-    if (props.planetName === "Mercury") {
-      return Mercury;
-    } else if (props.planetName === "Venus") {
-      return Venus;
-    } else if (props.planetName === "Earth") {
-      return Earth;
-    } else if (props.planetName === "Mars") {
-      return Mars;
-    } else if (props.planetName === "Jupiter") {
-      return Jupiter;
-    } else if (props.planetName === "Saturn") {
-      return Saturn;
-    } else if (props.planetName === "Uranus") {
-      return Uranus;
-    } else if (props.planetName === "Neptune") {
-      return Neptune;
+    if (props.planetName === "Mercury" && props.selectButton === "OVERVIEW") {
+      return MercuryPlanet;
+    } else if (
+      props.planetName === "Mercury" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return MercuryInternal;
+    } else if (
+      props.planetName === "Mercury" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return MercuryGeology;
+    }
+    if (props.planetName === "Venus" && props.selectButton === "OVERVIEW") {
+      return VenusPlanet;
+    } else if (
+      props.planetName === "Venus" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return VenusInternal;
+    } else if (
+      props.planetName === "Venus" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return VenusGeology;
+    }
+    if (props.planetName === "Earth" && props.selectButton === "OVERVIEW") {
+      return EarthPlanet;
+    } else if (
+      props.planetName === "Earth" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return EarthInternal;
+    } else if (
+      props.planetName === "Earth" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return EarthGeology;
+    }
+    if (props.planetName === "Mars" && props.selectButton === "OVERVIEW") {
+      return MarsPlanet;
+    } else if (
+      props.planetName === "Mars" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return MarsInternal;
+    } else if (
+      props.planetName === "Mars" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return MarsGeology;
+    }
+    if (props.planetName === "Jupiter" && props.selectButton === "OVERVIEW") {
+      return JupiterPlanet;
+    } else if (
+      props.planetName === "Jupiter" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return JupiterInternal;
+    } else if (
+      props.planetName === "Jupiter" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return JupiterGeology;
+    }
+    if (props.planetName === "Saturn" && props.selectButton === "OVERVIEW") {
+      return SaturnPlanet;
+    } else if (
+      props.planetName === "Saturn" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return SaturnInternal;
+    } else if (
+      props.planetName === "Saturn" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return SaturnGeology;
+    }
+    if (props.planetName === "Uranus" && props.selectButton === "OVERVIEW") {
+      return UranusPlanet;
+    } else if (
+      props.planetName === "Uranus" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return UranusInternal;
+    } else if (
+      props.planetName === "Uranus" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return UranusGeology;
+    }
+    if (props.planetName === "Neptune" && props.selectButton === "OVERVIEW") {
+      return NeptunePlanet;
+    } else if (
+      props.planetName === "Neptune" &&
+      props.selectButton === "Internal Structure"
+    ) {
+      return NeptuneInternal;
+    } else if (
+      props.planetName === "Neptune" &&
+      props.selectButton === "Surface Geology"
+    ) {
+      return NeptuneGeology;
     }
   }
   let array = [
-    { number: "01", name: "OVERVIEW", jsonName: "overview" },
-    { number: "02", name: "Internal Structure", jsonName: "structure" },
-    { number: "03", name: "Surface Geology", jsonName: "geology" },
+    { number: "01", name: "OVERVIEW" },
+    { number: "02", name: "Internal Structure" },
+    { number: "03", name: "Surface Geology" },
   ];
   return (
     <PlanetSection>
@@ -72,7 +175,24 @@ export default function PlanetPage(props: any) {
           </PlanetButtonBox>
         </PlanetInfoBox>
       </PlanetMainInfo>
-      <PlanetAdditionalInfo></PlanetAdditionalInfo>
+      <PlanetAdditionalInfo>
+        <PlanetBox>
+          <PlanetBoxTitle>ROTATION TIME</PlanetBoxTitle>
+          <PlanetBoxText>{props.rotationTime}</PlanetBoxText>
+        </PlanetBox>
+        <PlanetBox>
+          <PlanetBoxTitle>REVOLUTION TIME</PlanetBoxTitle>
+          <PlanetBoxText>{props.revolutionTime}</PlanetBoxText>
+        </PlanetBox>
+        <PlanetBox>
+          <PlanetBoxTitle>radius</PlanetBoxTitle>
+          <PlanetBoxText>{props.radius}</PlanetBoxText>
+        </PlanetBox>
+        <PlanetBox>
+          <PlanetBoxTitle>AVERAGE TEMP.</PlanetBoxTitle>
+          <PlanetBoxText>{props.averageTemp}</PlanetBoxText>
+        </PlanetBox>
+      </PlanetAdditionalInfo>
     </PlanetSection>
   );
 }
@@ -93,6 +213,32 @@ const PlanetMainInfo = styled.div`
 `;
 const PlanetAdditionalInfo = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const PlanetBox = styled.div`
+  width: 255px;
+  height: 128px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+const PlanetBoxTitle = styled.h6`
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+`;
+const PlanetBoxText = styled.p`
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
 `;
 const PlanetInfoBox = styled.div`
   width: 400px;
