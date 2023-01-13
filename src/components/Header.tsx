@@ -20,4 +20,6 @@ const Logo = styled.h2`
   color: #fff;
   font-weight: 400;
   letter-spacing: -1.05px;
+  font-family: "Antonio";
+  margin-left: 32px;
 `;

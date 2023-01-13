@@ -3,35 +3,56 @@ import styled from "styled-components";
 
 export default function Navigation(props: any) {
   return (
-    <nav style={{ width: "60%" }}>
+    <Nav>
       <ListUl>
         {props.info.map((item: any) => {
           return (
             <List>
-              <NavLink
-                style={{ color: "#fff" }}
+              <NavbarLink
                 to={item.name === "Mercury" ? "/" : item.name}
                 onClick={() => {
                   props.handleClick(item.name);
                 }}
               >
                 {item.name}
-              </NavLink>
+              </NavbarLink>
             </List>
           );
         })}
       </ListUl>
-    </nav>
+    </Nav>
   );
 }
+const NavbarLink = styled(NavLink)`
+  font-family: "League Spartan";
+  color: rgba(255, 255, 255, 0.75);
+  &:hover {
+    color: #fff;
+  }
+`;
+
+const Nav = styled.nav`
+  width: 60%;
+  height: 100%;
+  margin-right: 32px;
+`;
 const ListUl = styled.ul`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  align-items: center;
 `;
 const List = styled.li`
+  height: 100%;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:hover {
+    border-top: 4px solid #419ebb;
+  }
 `;

@@ -23,7 +23,7 @@ import UranusGeology from "../assets/geology-uranus.png";
 import NeptunePlanet from "../assets/planet-neptune.svg";
 import NeptuneInternal from "../assets/planet-neptune-internal.svg";
 import NeptuneGeology from "../assets/geology-neptune.png";
-
+import { Button } from "./Button";
 export default function PlanetPage(props: any) {
   function planetPhoto() {
     if (props.planetName === "Mercury" && props.selectButton === "OVERVIEW") {
@@ -149,27 +149,14 @@ export default function PlanetPage(props: any) {
           <PlanetButtonBox>
             {array.map((item) => {
               return (
-                <button
-                  style={{
-                    width: "100%",
-                    height: "48px",
-                    marginTop: "16px",
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    letterSpacing: "2.57143px",
-                    textTransform: "uppercase",
-                    fontSize: "12px",
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    background:
-                      props.selectButton === item.name ? "#419EBB" : "none",
-                  }}
+                <Button
                   onClick={() => props.clickButton(item.name)}
+                  selectButton={props.selectButton}
+                  name={item.name}
                 >
-                  <p style={{ marginLeft: 28 }}>{item.number}</p>
-                  <p style={{ marginLeft: 28 }}>{item.name}</p>
-                </button>
+                  <ButtonNumber>{item.number}</ButtonNumber>
+                  <ButtonName>{item.name}</ButtonName>
+                </Button>
               );
             })}
           </PlanetButtonBox>
@@ -224,7 +211,8 @@ const PlanetBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 23px;
 `;
 const PlanetBoxTitle = styled.h6`
   font-weight: 700;
@@ -232,6 +220,7 @@ const PlanetBoxTitle = styled.h6`
   letter-spacing: 1px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
+  font-family: "League Spartan";
 `;
 const PlanetBoxText = styled.p`
   font-weight: 400;
@@ -239,6 +228,7 @@ const PlanetBoxText = styled.p`
   letter-spacing: -1.5px;
   text-transform: uppercase;
   color: #ffffff;
+  font-family: "Antonio";
 `;
 const PlanetInfoBox = styled.div`
   width: 400px;
@@ -247,6 +237,7 @@ const PlanetInfoBox = styled.div`
 const PlanetTitle = styled.h1`
   font-weight: 400;
   font-size: 80px;
+  font-family: "Antonio";
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 23px;
@@ -257,10 +248,12 @@ const PlanetText = styled.p`
   line-height: 25px;
   color: #fff;
   margin-bottom: 23px;
+  font-family: "League Spartan";
 `;
 const PlanetTextSource = styled.span`
   font-weight: 400;
   font-size: 14px;
+  font-family: "League Spartan";
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 39px;
 `;
@@ -270,6 +263,24 @@ const PlanetButtonBox = styled.div`
 interface Props {
   chosenButton?: any;
 }
+const ButtonNumber = styled.p`
+  margin-left: 28px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2.57143px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "League Spartan";
+`;
+const ButtonName = styled.p`
+  margin-left: 28px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2.57143px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: "League Spartan";
+`;
 // const PlanetButton = styled.button<Props>`
 //   width: 100%;
 //   height: 48px;

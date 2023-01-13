@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import bg from "./assets/background-stars.svg";
 import { useState } from "react";
 import PlanetPage from "./components/PlanetPage";
-
+import { Helmet } from "react-helmet";
 let data = require("./data.json");
 const GlobalStyles = createGlobalStyle`
   *{
@@ -49,6 +49,12 @@ function App() {
   return (
     <Container>
       <GlobalStyles />
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Antonio&family=League+Spartan:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
       <Routes>
         <Route
           path="/"
