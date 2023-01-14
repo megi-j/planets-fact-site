@@ -3,7 +3,13 @@ import { Outlet } from "react-router-dom";
 import { HeaderStyle } from "./HeaderStyle";
 import styled from "styled-components";
 
-export default function Header(props: any) {
+interface Props {
+  info: any;
+  handleClick: (name: string) => void;
+  // clickedPlanet: string;
+}
+
+export default function Header(props: Props) {
   return (
     <>
       <HeaderStyle>
@@ -11,7 +17,7 @@ export default function Header(props: any) {
         <Navigation
           info={props.info}
           handleClick={props.handleClick}
-          clickedPlanet={props.clickedPlanet}
+          // clickedPlanet={props.clickedPlanet}
         />
       </HeaderStyle>
 

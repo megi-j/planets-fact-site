@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 interface Props {
-  name?: any;
-  handleClick: (name: any) => void;
-  color: any;
+  name: string;
+  handleClick: (name: string) => void;
+  color: string;
 }
 export default function Navigate(props: Props) {
   const [visible, setVisible] = useState(false);

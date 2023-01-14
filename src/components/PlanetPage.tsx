@@ -15,16 +15,7 @@ export default function PlanetPage(props: any) {
   return (
     <PlanetSection>
       <PlanetMainInfo>
-        <div
-          style={{
-            width: "50%",
-            height: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
+        <PlanetImageBox>
           {props.selectButton === "OVERVIEW" ? (
             <img src={Planet} alt={props.planetName} />
           ) : (
@@ -50,7 +41,7 @@ export default function PlanetPage(props: any) {
           ) : (
             ""
           )}
-        </div>
+        </PlanetImageBox>
         <PlanetInfoBox>
           <PlanetTitle>{props.planetName}</PlanetTitle>
           <PlanetText>{props.planetText}</PlanetText>
@@ -108,6 +99,14 @@ const PlanetMainInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+const PlanetImageBox = styled.div`
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  aligh-items: center;
+  position: relative;
 `;
 const PlanetAdditionalInfo = styled.div`
   width: 100%;
@@ -192,13 +191,3 @@ const ButtonName = styled.p`
   color: #ffffff;
   font-family: "League Spartan";
 `;
-// const PlanetButton = styled.button<Props>`
-//   width: 100%;
-//   height: 48px;
-
-//   border: 1px solid red;
-//   margin-bottom: 16px;
-//   color: #fff;
-// `;
-// background: ${(props) =>
-//   props.chosenButton == item.number ? "#419EBB" : "none"};

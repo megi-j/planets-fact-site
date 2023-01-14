@@ -1,12 +1,17 @@
-import { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Navigate from "./Navigate";
-export default function Navigation(props: any) {
+import { dataType } from "../types";
+interface Props {
+  info: [];
+  // name: string;
+  handleClick: (name: string) => void;
+  // color: string;
+}
+export default function Navigation(props: Props) {
   return (
     <Nav>
       <ListUl>
-        {props.info.map((item: any) => {
+        {props.info.map((item: dataType) => {
           return (
             <Navigate
               name={item.name}
@@ -19,13 +24,6 @@ export default function Navigation(props: any) {
     </Nav>
   );
 }
-const NavbarLink = styled(NavLink)`
-  font-family: "League Spartan";
-  color: rgba(255, 255, 255, 0.75);
-  &:hover {
-    color: #fff;
-  }
-`;
 
 const Nav = styled.nav`
   width: 60%;
@@ -39,22 +37,3 @@ const ListUl = styled.ul`
   justify-content: space-between;
   align-items: center;
 `;
-interface Props {
-  clickedPlanet?: any;
-}
-// background: ${(props) =>
-//   props.selectButton == props.name ? "#419EBB" : "none"};
-
-// const List = styled.li`
-//   height: 100%;
-//   letter-spacing: 1px;
-//   text-transform: uppercase;
-//   font-weight: 700;
-//   color: rgba(255, 255, 255, 0.75);
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// `;
-// &:hover {
-//   border-top: ${(props) =>
-//     props.clickedPlanet === "Mars" ? "4px solid red" : "4px solid yellow"}

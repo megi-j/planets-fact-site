@@ -5,6 +5,7 @@ import bg from "./assets/background-stars.svg";
 import { useEffect, useState } from "react";
 import PlanetPage from "./components/PlanetPage";
 import { Helmet } from "react-helmet";
+import { dataType } from "./types";
 
 let data = require("./data.json");
 
@@ -20,8 +21,8 @@ const GlobalStyles = createGlobalStyle`
 
 function App() {
   const [info, setInfo] = useState(data);
-  const [clickedPlanet, setClickedPlanet] = useState("Mercury");
-  const [selectedButton, setSelectedButton] = useState("OVERVIEW");
+  const [clickedPlanet, setClickedPlanet] = useState<string>("Mercury");
+  const [selectedButton, setSelectedButton] = useState<string>("OVERVIEW");
 
   const colors = [
     "#419EBB",
@@ -34,7 +35,7 @@ function App() {
     "#2D68F0",
   ];
   useEffect(() => {
-    info.map((item: any, index: any) => {
+    info.map((item: dataType, index: number) => {
       item.color = colors[index];
       return item;
     });
@@ -44,10 +45,10 @@ function App() {
   }
   console.log(info);
 
-  function clickButton(name: any) {
+  function clickButton(name: string) {
     setSelectedButton(name);
   }
-  function chooseText(item: any) {
+  function chooseText(item: dataType) {
     if (selectedButton === "OVERVIEW") {
       return item.overview.content;
     } else if (selectedButton === "Internal Structure") {
@@ -56,7 +57,7 @@ function App() {
       return item.geology.content;
     }
   }
-  function chooseSource(item: any) {
+  function chooseSource(item: dataType) {
     if (selectedButton === "OVERVIEW") {
       return item.overview.source;
     } else if (selectedButton === "Internal Structure") {
@@ -82,11 +83,11 @@ function App() {
             <Header
               info={info}
               handleClick={handleClick}
-              clickedPlanet={clickedPlanet}
+              // clickedPlanet={clickedPlanet}
             />
           }
         >
-          {info.map((item: any) => {
+          {info.map((item: dataType) => {
             return (
               <Route
                 path={item.name === "Mercury" ? "/" : item.name}

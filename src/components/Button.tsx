@@ -1,7 +1,7 @@
 import styled from "styled-components";
 interface Props {
-  selectButton: any;
-  name: any;
+  selectButton: string;
+  name: string;
 }
 export const Button = styled.button<Props>`
   width: 100%;
