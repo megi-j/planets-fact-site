@@ -1,145 +1,56 @@
 import styled from "styled-components";
-import MercuryPlanet from "../assets/planet-mercury.svg";
-import MercuryInternal from "../assets/planet-mercury-internal.svg";
-import MercuryGeology from "../assets/geology-mercury.png";
-import VenusPlanet from "../assets/planet-venus.svg";
-import VenusInternal from "../assets/planet-venus-internal.svg";
-import VenusGeology from "../assets/geology-venus.png";
-import EarthPlanet from "../assets/planet-earth.svg";
-import EarthInternal from "..//assets/planet-earth-internal.svg";
-import EarthGeology from "..//assets/geology-earth.png";
-import MarsPlanet from "../assets/planet-mars.svg";
-import MarsInternal from "../assets/planet-mars-internal.svg";
-import MarsGeology from "../assets/geology-mars.png";
-import JupiterPlanet from "../assets/planet-jupiter.svg";
-import JupiterInternal from "../assets/planet-jupiter-internal.svg";
-import JupiterGeology from "../assets/geology-jupiter.png";
-import SaturnPlanet from "../assets/planet-saturn.svg";
-import SaturnInternal from "../assets/planet-saturn-internal.svg";
-import SaturnGeology from "../assets/geology-saturn.png";
-import UranusPlanet from "../assets/planet-uranus.svg";
-import UranusInternal from "../assets/planet-uranus-internal.svg";
-import UranusGeology from "../assets/geology-uranus.png";
-import NeptunePlanet from "../assets/planet-neptune.svg";
-import NeptuneInternal from "../assets/planet-neptune-internal.svg";
-import NeptuneGeology from "../assets/geology-neptune.png";
 import { Button } from "./Button";
+
 export default function PlanetPage(props: any) {
-  function planetPhoto() {
-    if (props.planetName === "Mercury" && props.selectButton === "OVERVIEW") {
-      return MercuryPlanet;
-    } else if (
-      props.planetName === "Mercury" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return MercuryInternal;
-    } else if (
-      props.planetName === "Mercury" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return MercuryGeology;
-    }
-    if (props.planetName === "Venus" && props.selectButton === "OVERVIEW") {
-      return VenusPlanet;
-    } else if (
-      props.planetName === "Venus" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return VenusInternal;
-    } else if (
-      props.planetName === "Venus" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return VenusGeology;
-    }
-    if (props.planetName === "Earth" && props.selectButton === "OVERVIEW") {
-      return EarthPlanet;
-    } else if (
-      props.planetName === "Earth" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return EarthInternal;
-    } else if (
-      props.planetName === "Earth" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return EarthGeology;
-    }
-    if (props.planetName === "Mars" && props.selectButton === "OVERVIEW") {
-      return MarsPlanet;
-    } else if (
-      props.planetName === "Mars" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return MarsInternal;
-    } else if (
-      props.planetName === "Mars" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return MarsGeology;
-    }
-    if (props.planetName === "Jupiter" && props.selectButton === "OVERVIEW") {
-      return JupiterPlanet;
-    } else if (
-      props.planetName === "Jupiter" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return JupiterInternal;
-    } else if (
-      props.planetName === "Jupiter" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return JupiterGeology;
-    }
-    if (props.planetName === "Saturn" && props.selectButton === "OVERVIEW") {
-      return SaturnPlanet;
-    } else if (
-      props.planetName === "Saturn" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return SaturnInternal;
-    } else if (
-      props.planetName === "Saturn" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return SaturnGeology;
-    }
-    if (props.planetName === "Uranus" && props.selectButton === "OVERVIEW") {
-      return UranusPlanet;
-    } else if (
-      props.planetName === "Uranus" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return UranusInternal;
-    } else if (
-      props.planetName === "Uranus" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return UranusGeology;
-    }
-    if (props.planetName === "Neptune" && props.selectButton === "OVERVIEW") {
-      return NeptunePlanet;
-    } else if (
-      props.planetName === "Neptune" &&
-      props.selectButton === "Internal Structure"
-    ) {
-      return NeptuneInternal;
-    } else if (
-      props.planetName === "Neptune" &&
-      props.selectButton === "Surface Geology"
-    ) {
-      return NeptuneGeology;
-    }
-  }
+  let Internal = require(`../assets/planet-${props.planetName.toLowerCase()}-internal.svg`);
+  let Geology = require(`../assets/geology-${props.planetName.toLowerCase()}.png`);
+  let Planet = require(`../assets/planet-${props.planetName.toLowerCase()}.svg`);
+
   let array = [
     { number: "01", name: "OVERVIEW" },
     { number: "02", name: "Internal Structure" },
     { number: "03", name: "Surface Geology" },
   ];
+
   return (
     <PlanetSection>
       <PlanetMainInfo>
-        <img src={planetPhoto()} alt={props.planetName} />
+        <div
+          style={{
+            width: "50%",
+            height: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+          }}
+        >
+          {props.selectButton === "OVERVIEW" ? (
+            <img src={Planet} alt={props.planetName} />
+          ) : (
+            ""
+          )}
+          {props.selectButton === "Internal Structure" ? (
+            <img src={Internal} alt={props.planetName} />
+          ) : (
+            ""
+          )}
+          {props.selectButton === "Surface Geology" ? (
+            <>
+              <img src={Planet} />{" "}
+              <img
+                style={{
+                  position: "absolute",
+                  left: "22%",
+                  top: "50%",
+                }}
+                src={Geology}
+              />
+            </>
+          ) : (
+            ""
+          )}
+        </div>
         <PlanetInfoBox>
           <PlanetTitle>{props.planetName}</PlanetTitle>
           <PlanetText>{props.planetText}</PlanetText>

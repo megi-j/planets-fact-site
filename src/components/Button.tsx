@@ -22,14 +22,3 @@ export const Button = styled.button<Props>`
   background: ${(props) =>
     props.selectButton == props.name ? "#419EBB" : "none"};
 `;
-
-// const PlanetButton = styled.button<Props>`
-//   width: 100%;
-//   height: 48px;
-
-//   border: 1px solid red;
-//   margin-bottom: 16px;
-//   color: #fff;
-// `;
-// background: ${(props) =>
-//   props.chosenButton == item.number ? "#419EBB" : "none"};

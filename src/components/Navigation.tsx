@@ -1,22 +1,18 @@
+import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-
+import Navigate from "./Navigate";
 export default function Navigation(props: any) {
   return (
     <Nav>
       <ListUl>
         {props.info.map((item: any) => {
           return (
-            <List>
-              <NavbarLink
-                to={item.name === "Mercury" ? "/" : item.name}
-                onClick={() => {
-                  props.handleClick(item.name);
-                }}
-              >
-                {item.name}
-              </NavbarLink>
-            </List>
+            <Navigate
+              name={item.name}
+              handleClick={props.handleClick}
+              color={item.color}
+            />
           );
         })}
       </ListUl>
@@ -43,16 +39,22 @@ const ListUl = styled.ul`
   justify-content: space-between;
   align-items: center;
 `;
-const List = styled.li`
-  height: 100%;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &:hover {
-    border-top: 4px solid #419ebb;
-  }
-`;
+interface Props {
+  clickedPlanet?: any;
+}
+// background: ${(props) =>
+//   props.selectButton == props.name ? "#419EBB" : "none"};
+
+// const List = styled.li`
+//   height: 100%;
+//   letter-spacing: 1px;
+//   text-transform: uppercase;
+//   font-weight: 700;
+//   color: rgba(255, 255, 255, 0.75);
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// `;
+// &:hover {
+//   border-top: ${(props) =>
+//     props.clickedPlanet === "Mars" ? "4px solid red" : "4px solid yellow"}

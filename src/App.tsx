@@ -2,10 +2,12 @@ import styled, { createGlobalStyle } from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import bg from "./assets/background-stars.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlanetPage from "./components/PlanetPage";
 import { Helmet } from "react-helmet";
+
 let data = require("./data.json");
+
 const GlobalStyles = createGlobalStyle`
   *{
       margin: 0;
@@ -20,6 +22,23 @@ function App() {
   const [info, setInfo] = useState(data);
   const [clickedPlanet, setClickedPlanet] = useState("Mercury");
   const [selectedButton, setSelectedButton] = useState("OVERVIEW");
+
+  const colors = [
+    "#419EBB",
+    "#EDA249",
+    "#6D2ED5",
+    "#D14C32",
+    "#D83A34",
+    "#CD5120",
+    "#1EC1A2",
+    "#2D68F0",
+  ];
+  useEffect(() => {
+    info.map((item: any, index: any) => {
+      item.color = colors[index];
+      return item;
+    });
+  }, []);
   function handleClick(planetName: string) {
     setClickedPlanet(planetName);
   }
@@ -46,6 +65,7 @@ function App() {
       return item.geology.source;
     }
   }
+
   return (
     <Container>
       <GlobalStyles />
@@ -58,7 +78,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Header info={info} handleClick={handleClick} />}
+          element={
+            <Header
+              info={info}
+              handleClick={handleClick}
+              clickedPlanet={clickedPlanet}
+            />
+          }
         >
           {info.map((item: any) => {
             return (

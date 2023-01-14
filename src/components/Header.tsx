@@ -8,7 +8,11 @@ export default function Header(props: any) {
     <>
       <HeaderStyle>
         <Logo>THE PLANETS</Logo>
-        <Navigation info={props.info} handleClick={props.handleClick} />
+        <Navigation
+          info={props.info}
+          handleClick={props.handleClick}
+          clickedPlanet={props.clickedPlanet}
+        />
       </HeaderStyle>
 
       <Outlet />
