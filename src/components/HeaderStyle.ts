@@ -11,4 +11,8 @@ export const HeaderStyle = styled.header`
     flex-direction: column;
     justify-content: space-around;
   }
+  @media (max-width: 375px) {
+    height: 68px;
+    flex-direction: row;
+  }
 `;

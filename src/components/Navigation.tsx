@@ -33,6 +33,9 @@ const Nav = styled.nav`
     width: 90%;
     height: 0;
   }
+  @media (max-width: 375px) {
+    display: none;
+  }
 `;
 const ListUl = styled.ul`
   width: 100%;

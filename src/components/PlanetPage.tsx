@@ -112,7 +112,7 @@ const PlanetMainInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 350px;
-
+  border: 1px solid red;
   @media (max-width: 768px) {
     flex-direction: column;
     margin-bottom: 0;
@@ -229,6 +229,9 @@ const PlanetButtonBox = styled.div`
   width: 100%;
   @media (max-width: 768px) {
     width: 40%;
+  }
+  @media (max-width: 375px) {
+    display: none;
   }
 `;
 interface Props {
