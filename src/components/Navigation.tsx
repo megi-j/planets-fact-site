@@ -29,6 +29,9 @@ const Nav = styled.nav`
   width: 60%;
   height: 100%;
   margin-right: 32px;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 const ListUl = styled.ul`
   width: 100%;

@@ -51,6 +51,7 @@ const List = styled.li`
   letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: 700;
+  font-size: 11px;
   color: rgba(255, 255, 255, 0.75);
   display: flex;
   justify-content: space-between;
