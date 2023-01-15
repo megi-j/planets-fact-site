@@ -116,10 +116,12 @@ function App() {
 const Container = styled.div`
   max-width: 1440px;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   margin: 0 auto;
   border: 2px solid black;
   background-color: #070724;
   background-image: url(${bg});
+  background-position: center;
+  background-size: cover;
 `;
 export default App;

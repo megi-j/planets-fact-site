@@ -21,4 +21,8 @@ export const Button = styled.button<Props>`
   }
   background: ${(props) =>
     props.selectButton == props.name ? "#419EBB" : "none"};
+  @media (max-width: 768px) {
+    width: 281px;
+    height: 40px;
+  }
 `;

@@ -9,5 +9,6 @@ export const HeaderStyle = styled.header`
   @media (max-width: 768px) {
     height: 159px;
     flex-direction: column;
+    justify-content: space-around;
   }
 `;
