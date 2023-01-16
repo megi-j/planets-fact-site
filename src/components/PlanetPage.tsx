@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./Button";
-
+import { MobileButton } from "./MobileButton";
 export default function PlanetPage(props: any) {
   let Internal = require(`../assets/planet-${props.planetName.toLowerCase()}-internal.svg`);
   let Geology = require(`../assets/geology-${props.planetName.toLowerCase()}.png`);
@@ -14,6 +14,19 @@ export default function PlanetPage(props: any) {
 
   return (
     <PlanetSection>
+      <PlanetHeader>
+        {array.map((item) => {
+          return (
+            <MobileButton
+              onClick={() => props.clickButton(item.name)}
+              selectButton={props.selectButton}
+              name={item.name}
+            >
+              {item.name}
+            </MobileButton>
+          );
+        })}
+      </PlanetHeader>
       <PlanetMainInfo>
         <PlanetImageBox>
           {props.selectButton === "OVERVIEW" ? (
@@ -79,7 +92,18 @@ export default function PlanetPage(props: any) {
     </PlanetSection>
   );
 }
-
+const PlanetHeader = styled.header`
+  display: none;
+  @media (max-width: 375px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 47px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+`;
 const GeologyImg = styled.img`
   position: absolute;
   left: 22%;
@@ -105,6 +129,9 @@ const PlanetSection = styled.section`
   @media (max-width: 768px) {
     width: 100%;
   }
+  @media (max-width: 375px) {
+    margin: 0;
+  }
 `;
 const PlanetMainInfo = styled.div`
   width: 100%;
@@ -112,7 +139,6 @@ const PlanetMainInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 350px;
-  border: 1px solid red;
   @media (max-width: 768px) {
     flex-direction: column;
     margin-bottom: 0;
