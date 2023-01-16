@@ -1,23 +1,35 @@
 import styled from "styled-components";
 import arrow from "../assets/icon-chevron.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+
 export default function PlanetBurgerBoxes(props: any) {
+  let navigate = useNavigate();
   return (
-    <PlanetBurgerBox>
-      <PlanetColorBox />
-      <PlanetName>
-        <NavLink
-          to={props.name === "Mercury" ? "/" : props.name}
+    <>
+      <PlanetBurgerBox>
+        <PlanetColorBox />
+        <PlanetName
           onClick={() => {
             props.handleClick(props.name);
             props.burgerClicked();
+            navigate(props.name === "Mercury" ? "/" : `/${props.name}`);
           }}
         >
           {props.name}
-        </NavLink>
-      </PlanetName>
-      <img src={arrow} alt="arrow" />
-    </PlanetBurgerBox>
+          {/* <NavLink
+            to={props.name === "Mercury" ? "/" : props.name}
+            onClick={() => {
+              props.handleClick(props.name);
+              props.burgerClicked();
+            }}
+          >
+            {props.name}
+          </NavLink> */}
+        </PlanetName>
+        <img src={arrow} alt="arrow" />
+      </PlanetBurgerBox>
+      {props.isBurgerClicked && <Outlet />}
+    </>
   );
 }
 
