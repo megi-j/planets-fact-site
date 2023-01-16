@@ -6,6 +6,7 @@ import burger from "../assets/icon-hamburger.svg";
 interface Props {
   info: any;
   handleClick: (name: string) => void;
+  burgerClicked: () => void;
   // clickedPlanet: string;
 }
 
@@ -19,7 +20,7 @@ export default function Header(props: Props) {
           handleClick={props.handleClick}
           // clickedPlanet={props.clickedPlanet}
         />
-        <Burger src={burger} />
+        <Burger src={burger} onClick={props.burgerClicked} />
       </HeaderStyle>
 
       <Outlet />

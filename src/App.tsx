@@ -23,7 +23,7 @@ function App() {
   const [info, setInfo] = useState(data);
   const [clickedPlanet, setClickedPlanet] = useState<string>("Mercury");
   const [selectedButton, setSelectedButton] = useState<string>("OVERVIEW");
-
+  const [isBurgerClicked, setIsBurgerClicked] = useState<boolean>(false);
   const colors = [
     "#419EBB",
     "#EDA249",
@@ -66,7 +66,9 @@ function App() {
       return item.geology.source;
     }
   }
-
+  function burgerClicked() {
+    setIsBurgerClicked(!isBurgerClicked);
+  }
   return (
     <Container>
       <GlobalStyles />
@@ -83,6 +85,7 @@ function App() {
             <Header
               info={info}
               handleClick={handleClick}
+              burgerClicked={burgerClicked}
               // clickedPlanet={clickedPlanet}
             />
           }
@@ -102,6 +105,10 @@ function App() {
                     revolutionTime={item.revolution}
                     radius={item.radius}
                     averageTemp={item.temperature}
+                    isBurgerClicked={isBurgerClicked}
+                    info={info}
+                    handleClick={handleClick}
+                    burgerClicked={burgerClicked}
                   />
                 }
               />

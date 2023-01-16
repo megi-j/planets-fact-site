@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Button } from "./Button";
 import { MobileButton } from "./MobileButton";
+import { PlanetSection } from "./PlanetSection";
+import { PlanetBurgerSection } from "./PlanetBurgerSection";
+import PlanetBurgerBoxes from "./PlanetBurgerBoxes";
 export default function PlanetPage(props: any) {
   let Internal = require(`../assets/planet-${props.planetName.toLowerCase()}-internal.svg`);
   let Geology = require(`../assets/geology-${props.planetName.toLowerCase()}.png`);
@@ -13,85 +16,101 @@ export default function PlanetPage(props: any) {
   ];
 
   return (
-    <PlanetSection>
-      <PlanetHeader>
-        {array.map((item) => {
+    <>
+      <PlanetBurgerSection isBurgerClicked={props.isBurgerClicked}>
+        {props.info.map((item: any) => {
           return (
-            <MobileButton
-              onClick={() => props.clickButton(item.name)}
-              selectButton={props.selectButton}
+            <PlanetBurgerBoxes
+              planetName={item.name}
               name={item.name}
-            >
-              {item.name}
-            </MobileButton>
+              handleClick={props.handleClick}
+              burgerClicked={props.burgerClicked}
+            />
           );
         })}
-      </PlanetHeader>
-      <PlanetMainInfo>
-        <PlanetImageBox>
-          {props.selectButton === "OVERVIEW" ? (
-            <PlanetImg src={Planet} alt={props.planetName} />
-          ) : (
-            ""
-          )}
-          {props.selectButton === "Internal Structure" ? (
-            <PlanetImg src={Internal} alt={props.planetName} />
-          ) : (
-            ""
-          )}
-          {props.selectButton === "Surface Geology" ? (
-            <>
-              <PlanetImg src={Planet} /> <GeologyImg src={Geology} />
-            </>
-          ) : (
-            ""
-          )}
-        </PlanetImageBox>
-        <PlanetInfoBox>
-          <PlanetTextBox>
-            <PlanetTitle>{props.planetName}</PlanetTitle>
-            <PlanetText>{props.planetText}</PlanetText>
-            <PlanetTextSource>
-              Source : <a href={props.textSource}>Wikipedia</a>
-            </PlanetTextSource>
-          </PlanetTextBox>
-          <PlanetButtonBox>
-            {array.map((item) => {
-              return (
-                <Button
-                  onClick={() => props.clickButton(item.name)}
-                  selectButton={props.selectButton}
-                  name={item.name}
-                >
-                  <ButtonNumber>{item.number}</ButtonNumber>
-                  <ButtonName>{item.name}</ButtonName>
-                </Button>
-              );
-            })}
-          </PlanetButtonBox>
-        </PlanetInfoBox>
-      </PlanetMainInfo>
-      <PlanetAdditionalInfo>
-        <PlanetBox>
-          <PlanetBoxTitle>ROTATION TIME</PlanetBoxTitle>
-          <PlanetBoxText>{props.rotationTime}</PlanetBoxText>
-        </PlanetBox>
-        <PlanetBox>
-          <PlanetBoxTitle>REVOLUTION TIME</PlanetBoxTitle>
-          <PlanetBoxText>{props.revolutionTime}</PlanetBoxText>
-        </PlanetBox>
-        <PlanetBox>
-          <PlanetBoxTitle>radius</PlanetBoxTitle>
-          <PlanetBoxText>{props.radius}</PlanetBoxText>
-        </PlanetBox>
-        <PlanetBox>
-          <PlanetBoxTitle>AVERAGE TEMP.</PlanetBoxTitle>
-          <PlanetBoxText>{props.averageTemp}</PlanetBoxText>
-        </PlanetBox>
-      </PlanetAdditionalInfo>
-    </PlanetSection>
+      </PlanetBurgerSection>
+
+      <PlanetSection isBurgerClicked={props.isBurgerClicked}>
+        <PlanetHeader>
+          {array.map((item) => {
+            return (
+              <MobileButton
+                onClick={() => props.clickButton(item.name)}
+                selectButton={props.selectButton}
+                name={item.name}
+              >
+                {item.name}
+              </MobileButton>
+            );
+          })}
+        </PlanetHeader>
+        <PlanetMainInfo>
+          <PlanetImageBox>
+            {props.selectButton === "OVERVIEW" ? (
+              <PlanetImg src={Planet} alt={props.planetName} />
+            ) : (
+              ""
+            )}
+            {props.selectButton === "Internal Structure" ? (
+              <PlanetImg src={Internal} alt={props.planetName} />
+            ) : (
+              ""
+            )}
+            {props.selectButton === "Surface Geology" ? (
+              <>
+                <PlanetImg src={Planet} /> <GeologyImg src={Geology} />
+              </>
+            ) : (
+              ""
+            )}
+          </PlanetImageBox>
+          <PlanetInfoBox>
+            <PlanetTextBox>
+              <PlanetTitle>{props.planetName}</PlanetTitle>
+              <PlanetText>{props.planetText}</PlanetText>
+              <PlanetTextSource>
+                Source : <a href={props.textSource}>Wikipedia</a>
+              </PlanetTextSource>
+            </PlanetTextBox>
+            <PlanetButtonBox>
+              {array.map((item) => {
+                return (
+                  <Button
+                    onClick={() => props.clickButton(item.name)}
+                    selectButton={props.selectButton}
+                    name={item.name}
+                  >
+                    <ButtonNumber>{item.number}</ButtonNumber>
+                    <ButtonName>{item.name}</ButtonName>
+                  </Button>
+                );
+              })}
+            </PlanetButtonBox>
+          </PlanetInfoBox>
+        </PlanetMainInfo>
+        <PlanetAdditionalInfo>
+          <PlanetBox>
+            <PlanetBoxTitle>ROTATION TIME</PlanetBoxTitle>
+            <PlanetBoxText>{props.rotationTime}</PlanetBoxText>
+          </PlanetBox>
+          <PlanetBox>
+            <PlanetBoxTitle>REVOLUTION TIME</PlanetBoxTitle>
+            <PlanetBoxText>{props.revolutionTime}</PlanetBoxText>
+          </PlanetBox>
+          <PlanetBox>
+            <PlanetBoxTitle>radius</PlanetBoxTitle>
+            <PlanetBoxText>{props.radius}</PlanetBoxText>
+          </PlanetBox>
+          <PlanetBox>
+            <PlanetBoxTitle>AVERAGE TEMP.</PlanetBoxTitle>
+            <PlanetBoxText>{props.averageTemp}</PlanetBoxText>
+          </PlanetBox>
+        </PlanetAdditionalInfo>
+      </PlanetSection>
+    </>
   );
 }
+
 const PlanetHeader = styled.header`
   display: none;
   @media (max-width: 375px) {
@@ -119,21 +138,7 @@ const PlanetImg = styled.img`
     width: 100%;
   }
 `;
-const PlanetSection = styled.section`
-  width: 80%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 126px auto;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-  @media (max-width: 375px) {
-    margin: 0;
-  }
-`;
+
 const PlanetMainInfo = styled.div`
   width: 100%;
   display: flex;
