@@ -102,6 +102,7 @@ const PlanetHeader = styled.header`
     height: 47px;
     margin: 0 auto;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 64px;
   }
 `;
 const GeologyImg = styled.img`
@@ -166,6 +167,9 @@ const PlanetAdditionalInfo = styled.div`
     margin-top: 27px;
     justify-content: space-evenly;
   }
+  @media (max-width: 375px) {
+    flex-direction: column;
+  }
 `;
 const PlanetBox = styled.div`
   width: 255px;
@@ -179,6 +183,15 @@ const PlanetBox = styled.div`
   @media (max-width: 768px) {
     width: 164px;
     height: 88px;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+    height: 48px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 23px;
+    margin-bottom: 8px;
   }
 `;
 const PlanetBoxTitle = styled.h6`
@@ -204,16 +217,22 @@ const PlanetBoxText = styled.p`
     font-size: 24px;
     letter-spacing: -0.9px;
   }
+  @media (max-width: 375px) {
+    font-size: 20px;
+    letter-spacing: -0.75px;
+  }
 `;
 const PlanetInfoBox = styled.div`
   width: 400px;
   height: 100%;
-
   @media (max-width: 768px) {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
+  }
+  @media (max-width: 375px) {
+    padding: 0 24px;
   }
 `;
 const PlanetTitle = styled.h1`
@@ -225,6 +244,9 @@ const PlanetTitle = styled.h1`
   margin-bottom: 23px;
   @media (max-width: 768px) {
     font-size: 48px;
+  }
+  @media (max-width: 375px) {
+    font-size: 40px;
   }
 `;
 const PlanetText = styled.p`
@@ -249,6 +271,13 @@ const PlanetTextSource = styled.span`
 const PlanetTextBox = styled.div`
   @media (max-width: 768px) {
     width: 40%;
+  }
+  @media (max-width: 375px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 const PlanetButtonBox = styled.div`
