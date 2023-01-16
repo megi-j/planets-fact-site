@@ -17,6 +17,7 @@ export default function Navigation(props: Props) {
               name={item.name}
               handleClick={props.handleClick}
               color={item.color}
+              key={item.name}
             />
           );
         })}

@@ -109,6 +109,7 @@ function App() {
                     info={info}
                     handleClick={handleClick}
                     burgerClicked={burgerClicked}
+                    key={item.name}
                   />
                 }
               />

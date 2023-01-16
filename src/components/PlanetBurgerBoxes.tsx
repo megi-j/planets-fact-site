@@ -13,7 +13,7 @@ export default function PlanetBurgerBoxes(props: any) {
             props.burgerClicked();
           }}
         >
-          {props.planetName}
+          {props.name}
         </NavLink>
       </PlanetName>
       <img src={arrow} alt="arrow" />

@@ -21,10 +21,10 @@ export default function PlanetPage(props: any) {
         {props.info.map((item: any) => {
           return (
             <PlanetBurgerBoxes
-              planetName={item.name}
               name={item.name}
               handleClick={props.handleClick}
               burgerClicked={props.burgerClicked}
+              key={item.name}
             />
           );
         })}
@@ -38,6 +38,7 @@ export default function PlanetPage(props: any) {
                 onClick={() => props.clickButton(item.name)}
                 selectButton={props.selectButton}
                 name={item.name}
+                key={item.number}
               >
                 {item.name}
               </MobileButton>
@@ -79,6 +80,7 @@ export default function PlanetPage(props: any) {
                     onClick={() => props.clickButton(item.name)}
                     selectButton={props.selectButton}
                     name={item.name}
+                    key={item.number}
                   >
                     <ButtonNumber>{item.number}</ButtonNumber>
                     <ButtonName>{item.name}</ButtonName>
