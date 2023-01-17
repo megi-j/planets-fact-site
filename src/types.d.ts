@@ -18,3 +18,27 @@ export type dataType = {
   };
   temperature: string;
 };
+
+export type PlanetPageProps = {
+  planetName: string;
+  isBurgerClicked: boolean;
+  info: [];
+  handleClick: (name: string) => void;
+  burgerClicked: () => void;
+  clickButton: (name: string) => void;
+  selectButton: string;
+  color: string;
+  planetText: string | undefined;
+  textSource: string | undefined;
+  rotationTime: string;
+  revolutionTime: string;
+  radius: string;
+  averageTemp: string;
+};
+export type PlanetBurgerBoxesType = {
+  color: string;
+  name: string;
+  isBurgerClicked: boolean;
+  handleClick: (name: string) => void;
+  burgerClicked: () => void;
+};

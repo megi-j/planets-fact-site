@@ -10,11 +10,13 @@ export default function Navigate(props: Props) {
   const [visible, setVisible] = useState(false);
   const [width, setWidth] = useState(0);
   const [left, setLeft] = useState(0);
-  const li = useRef<any>();
+  const li = useRef<HTMLLIElement>(null);
   function hover() {
     setVisible(true);
-    setWidth(li.current.getBoundingClientRect().width);
-    setLeft(li.current.getBoundingClientRect().x);
+    if (li.current) {
+      setWidth(li.current.getBoundingClientRect().width);
+      setLeft(li.current.getBoundingClientRect().x);
+    }
   }
   function out() {
     setVisible(false);
@@ -46,6 +48,7 @@ export default function Navigate(props: Props) {
     </>
   );
 }
+
 const List = styled.li`
   height: 100%;
   letter-spacing: 1px;

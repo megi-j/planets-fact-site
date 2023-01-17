@@ -4,21 +4,22 @@ import { MobileButton } from "./MobileButton";
 import { PlanetSection } from "./PlanetSection";
 import { PlanetBurgerSection } from "./PlanetBurgerSection";
 import PlanetBurgerBoxes from "./PlanetBurgerBoxes";
-export default function PlanetPage(props: any) {
+import { dataType, PlanetPageProps } from "../types";
+
+export default function PlanetPage(props: PlanetPageProps) {
   let Internal = require(`../assets/planet-${props.planetName.toLowerCase()}-internal.svg`);
   let Geology = require(`../assets/geology-${props.planetName.toLowerCase()}.png`);
   let Planet = require(`../assets/planet-${props.planetName.toLowerCase()}.svg`);
 
-  let array = [
+  let buttonArray = [
     { number: "01", name: "OVERVIEW" },
     { number: "02", name: "Internal Structure" },
     { number: "03", name: "Surface Geology" },
   ];
-
   return (
     <>
       <PlanetBurgerSection isBurgerClicked={props.isBurgerClicked}>
-        {props.info.map((item: any) => {
+        {props.info.map((item: dataType) => {
           return (
             <PlanetBurgerBoxes
               name={item.name}
@@ -26,6 +27,7 @@ export default function PlanetPage(props: any) {
               burgerClicked={props.burgerClicked}
               key={item.name}
               color={item.color}
+              isBurgerClicked={props.isBurgerClicked}
             />
           );
         })}
@@ -33,7 +35,7 @@ export default function PlanetPage(props: any) {
 
       <PlanetSection isBurgerClicked={props.isBurgerClicked}>
         <PlanetHeader>
-          {array.map((item) => {
+          {buttonArray.map((item) => {
             return (
               <MobileButton
                 onClick={() => props.clickButton(item.name)}
@@ -42,7 +44,7 @@ export default function PlanetPage(props: any) {
                 key={item.number}
                 color={props.color}
               >
-                {item.name}
+                {item.name.split(" ").shift()}
               </MobileButton>
             );
           })}
@@ -76,13 +78,14 @@ export default function PlanetPage(props: any) {
               </PlanetTextSource>
             </PlanetTextBox>
             <PlanetButtonBox>
-              {array.map((item) => {
+              {buttonArray.map((item) => {
                 return (
                   <Button
                     onClick={() => props.clickButton(item.name)}
                     selectButton={props.selectButton}
                     name={item.name}
                     key={item.number}
+                    color={props.color}
                   >
                     <ButtonNumber>{item.number}</ButtonNumber>
                     <ButtonName>{item.name}</ButtonName>
@@ -117,7 +120,7 @@ export default function PlanetPage(props: any) {
 
 const PlanetHeader = styled.header`
   display: none;
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -136,7 +139,7 @@ const GeologyImg = styled.img`
     width: 158px;
     height: 165px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     width: 141px;
     height: 160px;
   }
@@ -180,7 +183,7 @@ const PlanetAdditionalInfo = styled.div`
     margin-top: 27px;
     justify-content: space-evenly;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     flex-direction: column;
   }
 `;
@@ -197,7 +200,7 @@ const PlanetBox = styled.div`
     width: 164px;
     height: 88px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     width: 90%;
     height: 48px;
     flex-direction: row;
@@ -230,7 +233,7 @@ const PlanetBoxText = styled.p`
     font-size: 24px;
     letter-spacing: -0.9px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     font-size: 20px;
     letter-spacing: -0.75px;
   }
@@ -244,7 +247,7 @@ const PlanetInfoBox = styled.div`
     align-items: center;
     width: 100%;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     padding: 0 24px;
   }
 `;
@@ -258,7 +261,7 @@ const PlanetTitle = styled.h1`
   @media (max-width: 768px) {
     font-size: 48px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     font-size: 40px;
   }
 `;
@@ -285,7 +288,7 @@ const PlanetTextBox = styled.div`
   @media (max-width: 768px) {
     width: 40%;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -298,13 +301,11 @@ const PlanetButtonBox = styled.div`
   @media (max-width: 768px) {
     width: 40%;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     display: none;
   }
 `;
-interface Props {
-  chosenButton?: any;
-}
+
 const ButtonNumber = styled.p`
   margin-left: 28px;
   font-weight: 700;

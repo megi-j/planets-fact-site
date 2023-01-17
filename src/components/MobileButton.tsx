@@ -18,4 +18,3 @@ export const MobileButton = styled.button<Props>`
   border-bottom: ${(props) =>
     props.selectButton == props.name ? `4px solid ${props.color}` : "none"};
 `;
-// "4px solid #419EBB"

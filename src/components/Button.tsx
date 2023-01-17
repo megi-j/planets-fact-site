@@ -2,6 +2,7 @@ import styled from "styled-components";
 interface Props {
   selectButton: string;
   name: string;
+  color: string;
 }
 export const Button = styled.button<Props>`
   width: 100%;
@@ -20,7 +21,7 @@ export const Button = styled.button<Props>`
     background-color: rgba(216, 216, 216, 0.2);
   }
   background: ${(props) =>
-    props.selectButton == props.name ? "#419EBB" : "none"};
+    props.selectButton == props.name ? props.color : "none"};
   @media (max-width: 768px) {
     width: 281px;
     height: 40px;

@@ -13,7 +13,7 @@ export const PlanetSection = styled.section<PlanetProps>`
   @media (max-width: 768px) {
     width: 100%;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     margin: 0;
     display: ${(props) => (props.isBurgerClicked ? "none" : "flex")};
   }

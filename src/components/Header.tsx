@@ -4,10 +4,9 @@ import { HeaderStyle } from "./HeaderStyle";
 import styled from "styled-components";
 import burger from "../assets/icon-hamburger.svg";
 interface Props {
-  info: any;
+  info: [];
   handleClick: (name: string) => void;
   burgerClicked: () => void;
-  // clickedPlanet: string;
 }
 
 export default function Header(props: Props) {
@@ -15,11 +14,7 @@ export default function Header(props: Props) {
     <>
       <HeaderStyle>
         <Logo>THE PLANETS</Logo>
-        <Navigation
-          info={props.info}
-          handleClick={props.handleClick}
-          // clickedPlanet={props.clickedPlanet}
-        />
+        <Navigation info={props.info} handleClick={props.handleClick} />
         <Burger src={burger} onClick={props.burgerClicked} />
       </HeaderStyle>
 
@@ -29,7 +24,7 @@ export default function Header(props: Props) {
 }
 const Burger = styled.img`
   display: none;
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     display: block;
   }
 `;
@@ -40,7 +35,7 @@ const Logo = styled.h2`
   letter-spacing: -1.05px;
   font-family: "Antonio";
   margin-left: 32px;
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     margin-left: 0;
   }
 `;

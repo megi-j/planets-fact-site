@@ -3,9 +3,7 @@ import Navigate from "./Navigate";
 import { dataType } from "../types";
 interface Props {
   info: [];
-  // name: string;
   handleClick: (name: string) => void;
-  // color: string;
 }
 export default function Navigation(props: Props) {
   return (
@@ -34,7 +32,7 @@ const Nav = styled.nav`
     width: 90%;
     height: 0;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     display: none;
   }
 `;
