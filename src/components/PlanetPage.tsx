@@ -25,6 +25,7 @@ export default function PlanetPage(props: any) {
               handleClick={props.handleClick}
               burgerClicked={props.burgerClicked}
               key={item.name}
+              color={item.color}
             />
           );
         })}
@@ -39,6 +40,7 @@ export default function PlanetPage(props: any) {
                 selectButton={props.selectButton}
                 name={item.name}
                 key={item.number}
+                color={props.color}
               >
                 {item.name}
               </MobileButton>
@@ -133,6 +135,10 @@ const GeologyImg = styled.img`
   @media (max-width: 768px) {
     width: 158px;
     height: 165px;
+  }
+  @media (max-width: 375px) {
+    width: 141px;
+    height: 160px;
   }
 `;
 const PlanetImg = styled.img`

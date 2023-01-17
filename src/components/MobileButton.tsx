@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface Props {
   selectButton: string;
   name: string;
+  color: string;
 }
 export const MobileButton = styled.button<Props>`
   color: rgba(255, 255, 255, 0.5);
@@ -15,5 +16,6 @@ export const MobileButton = styled.button<Props>`
   border: none;
   background: none;
   border-bottom: ${(props) =>
-    props.selectButton == props.name ? "4px solid #419EBB" : "none"};
+    props.selectButton == props.name ? `4px solid ${props.color}` : "none"};
 `;
+// "4px solid #419EBB"

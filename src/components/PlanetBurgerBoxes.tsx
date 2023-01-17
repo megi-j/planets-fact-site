@@ -7,7 +7,7 @@ export default function PlanetBurgerBoxes(props: any) {
   return (
     <>
       <PlanetBurgerBox>
-        <PlanetColorBox />
+        <PlanetColorBox color={props.color} />
         <PlanetName
           onClick={() => {
             props.handleClick(props.name);
@@ -32,7 +32,9 @@ export default function PlanetBurgerBoxes(props: any) {
     </>
   );
 }
-
+interface ColorProps {
+  color: string;
+}
 const PlanetBurgerBox = styled.div`
   width: 100%;
   height: 65px;
@@ -41,11 +43,11 @@ const PlanetBurgerBox = styled.div`
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 `;
-const PlanetColorBox = styled.div`
+const PlanetColorBox = styled.div<ColorProps>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: red;
+  background-color: ${(props) => props.color};
 `;
 const PlanetName = styled.li`
   font-weight: 700;
